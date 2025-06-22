@@ -1,0 +1,172 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { Target, Users, Award, TrendingUp } from 'lucide-react';
+
+const About = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const stats = [
+    { icon: Users, value: "50+", label: "Happy Clients" },
+    { icon: Award, value: "100+", label: "Projects Completed" },
+    { icon: TrendingUp, value: "5+", label: "Years Experience" },
+    { icon: Target, value: "24/7", label: "Support Available" }
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  return (
+    <section id="about" className="py-20 bg-gradient-to-br from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="text-center mb-16"
+        >
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl md:text-5xl font-bold text-secondary-900 mb-6"
+          >
+            About <span className="bg-gradient-to-r from-primary-500 to-accent-500 bg-clip-text text-transparent">Damodaran</span>
+          </motion.h2>
+          <motion.p
+            variants={itemVariants}
+            className="text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed"
+          >
+            We are a forward-thinking IT consultancy dedicated to empowering businesses 
+            through innovative technology solutions. Our expertise spans across multiple 
+            domains, ensuring comprehensive digital transformation for our clients.
+          </motion.p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+          <motion.div
+            variants={itemVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            transition={{ delay: 0.3 }}
+            className="space-y-6"
+          >
+            <h3 className="text-3xl font-bold text-secondary-900 mb-6">
+              Our Mission
+            </h3>
+            <p className="text-lg text-secondary-600 leading-relaxed">
+              To bridge the gap between complex technology and business success. We believe 
+              that every organization, regardless of size, deserves access to cutting-edge 
+              technology solutions that drive growth, efficiency, and innovation.
+            </p>
+            <p className="text-lg text-secondary-600 leading-relaxed">
+              Our team of experienced professionals works closely with clients to understand 
+              their unique challenges and deliver tailored solutions that exceed expectations.
+            </p>
+            
+            <div className="space-y-4 mt-8">
+              {[
+                "Custom Software Development",
+                "Cloud Migration & Management",
+                "Digital Transformation Strategy",
+                "IT Infrastructure Optimization"
+              ].map((service, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                  transition={{ delay: 0.5 + index * 0.1 }}
+                  className="flex items-center space-x-3"
+                >
+                  <div className="w-2 h-2 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full"></div>
+                  <span className="text-secondary-700 font-medium">{service}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={itemVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            transition={{ delay: 0.5 }}
+            className="relative"
+          >
+            <div className="bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl p-8 text-white">
+              <h3 className="text-2xl font-bold mb-6">Why Choose Us?</h3>
+              <div className="space-y-4">
+                {[
+                  "Proven track record of successful implementations",
+                  "Agile methodology ensuring rapid delivery",
+                  "24/7 support and maintenance services",
+                  "Cutting-edge technology expertise",
+                  "Cost-effective solutions tailored to your budget"
+                ].map((point, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+                    transition={{ delay: 0.7 + index * 0.1 }}
+                    className="flex items-start space-x-3"
+                  >
+                    <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
+                    <span>{point}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Stats Section */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="text-center group"
+            >
+              <motion.div
+                className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              >
+                <stat.icon className="w-8 h-8 text-white" />
+              </motion.div>
+              <h3 className="text-3xl font-bold text-secondary-900 mb-2">{stat.value}</h3>
+              <p className="text-secondary-600 font-medium">{stat.label}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
