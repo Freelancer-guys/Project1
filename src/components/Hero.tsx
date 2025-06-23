@@ -1,10 +1,11 @@
+// Updated Hero.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Code, Database, Cloud } from 'lucide-react';
+import { ArrowRight, Code, Database, Shield } from 'lucide-react';
 
 const Hero = () => {
-  const scrollToAbout = () => {
-    const element = document.getElementById('about');
+  const scrollToServices = () => {
+    const element = document.getElementById('services');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -12,31 +13,16 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-secondary-900 via-secondary-800 to-primary-900">
-      {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <motion.div
           className="absolute top-20 left-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
       </div>
 
@@ -47,12 +33,12 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="mb-8"
         >
-          <motion.img 
-            src="/Damodaran Logo.png" 
-            alt="Damodaran Logo" 
+          <motion.img
+            src="/Damodaran Logo.png"
+            alt="Damodaran Logo"
             className="h-24 w-24 mx-auto mt-16 sm:mt-20 mb-6"
             animate={{ rotate: [0, 360] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           />
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
             <motion.span
@@ -69,7 +55,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.7 }}
               className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent"
             >
-              IT Consultancy
+              IT Consultants
             </motion.span>
           </h1>
           <motion.p
@@ -78,33 +64,22 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            Transforming businesses through innovative technology solutions. 
-            We deliver cutting-edge IT consulting services that drive growth and efficiency.
+            Reliable IT Solutions for a Secure, Scalable Future. We empower businesses with expert software development, data analytics, cybersecurity, and infrastructure support.
           </motion.p>
         </motion.div>
 
-        {/* Floating Icons */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
           className="flex justify-center space-x-8 mb-12"
         >
-          {[
-            { Icon: Code, delay: 0 },
-            { Icon: Database, delay: 0.2 },
-            { Icon: Cloud, delay: 0.4 }
-          ].map(({ Icon, delay }, index) => (
+          {[Code, Database, Shield].map((Icon, index) => (
             <motion.div
               key={index}
               className="p-4 bg-white/10 backdrop-blur-sm rounded-full"
               animate={{ y: [0, -10, 0] }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                delay: delay,
-                ease: "easeInOut"
-              }}
+              transition={{ duration: 3, repeat: Infinity, delay: index * 0.2, ease: 'easeInOut' }}
             >
               <Icon className="w-8 h-8 text-primary-400" />
             </motion.div>
@@ -115,17 +90,16 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1 }}
-          onClick={scrollToAbout}
+          onClick={scrollToServices}
           className="group inline-flex items-center space-x-2 bg-gradient-to-r from-primary-500 to-accent-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <span>Discover Our Solutions</span>
+          <span>Explore Our Services</span>
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
         </motion.button>
       </div>
 
-      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
