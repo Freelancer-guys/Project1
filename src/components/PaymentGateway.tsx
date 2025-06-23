@@ -406,81 +406,104 @@ const PaymentGateway: React.FC<PaymentGatewayProps> = ({ isOpen, onClose }) => {
               </div>
 
               {/* Billing Address */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-secondary-900">Billing Address</h3>
-                
-                <div>
-                  <label className="block text-sm font-medium text-secondary-700 mb-2">
-                    Street Address
-                  </label>
+             <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-secondary-900">Billing Address</h3>
+
+              {/* Street Address */}
+              <div>
+                <label className="block text-sm font-medium text-secondary-700 mb-2">
+                  Street Address
+                </label>
+                <input
+                  type="text"
+                  name="billing.street"
+                  value={formData.billingAddress.street}
+                  onChange={handleInputChange}
+                  placeholder="123 Main Street"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
+                />
+              </div>
+
+              {/* Country */}
+              <div>
+                <label className="block text-sm font-medium text-secondary-700 mb-2">
+                  Country
+                </label>
+                <input
+                  type="text"
+                  name="billing.country"
+                  value={formData.billingAddress.country}
+                  onChange={handleInputChange}
+                  placeholder="Australia"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
+                />
+              </div>
+
+              {/* State */}
+              <div>
+                <label className="block text-sm font-medium text-secondary-700 mb-2">
+                  State
+                </label>
+                {formData.billingAddress.country.toLowerCase() === 'australia' ? (
+                  <select
+                    name="billing.state"
+                    value={formData.billingAddress.state}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
+                  >
+                    <option value="">Select State</option>
+                    <option value="NSW">New South Wales</option>
+                    <option value="VIC">Victoria</option>
+                    <option value="QLD">Queensland</option>
+                    <option value="WA">Western Australia</option>
+                    <option value="SA">South Australia</option>
+                    <option value="TAS">Tasmania</option>
+                    <option value="ACT">Australian Capital Territory</option>
+                    <option value="NT">Northern Territory</option>
+                  </select>
+                ) : (
                   <input
                     type="text"
-                    name="billing.street"
-                    value={formData.billingAddress.street}
+                    name="billing.state"
+                    value={formData.billingAddress.state}
                     onChange={handleInputChange}
-                    placeholder="123 Main Street"
+                    placeholder="State/Province"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
                   />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
-                      City
-                    </label>
-                    <input
-                      type="text"
-                      name="billing.city"
-                      value={formData.billingAddress.city}
-                      onChange={handleInputChange}
-                      placeholder="New York"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
-                      State
-                    </label>
-                    <input
-                      type="text"
-                      name="billing.state"
-                      value={formData.billingAddress.state}
-                      onChange={handleInputChange}
-                      placeholder="NY"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
-                      ZIP Code
-                    </label>
-                    <input
-                      type="text"
-                      name="billing.zipCode"
-                      value={formData.billingAddress.zipCode}
-                      onChange={handleInputChange}
-                      placeholder="10001"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
-                      Country
-                    </label>
-                    <input
-                      type="text"
-                      name="billing.country"
-                      value={formData.billingAddress.country}
-                      onChange={handleInputChange}
-                      placeholder="Australia"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
-                    />
-                  </div>
-                </div>
+                )}
               </div>
+
+              {/* City */}
+              <div>
+                <label className="block text-sm font-medium text-secondary-700 mb-2">
+                  City
+                </label>
+                <input
+                  type="text"
+                  name="billing.city"
+                  value={formData.billingAddress.city}
+                  onChange={handleInputChange}
+                  placeholder="Melbourne"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
+                />
+              </div>
+
+              {/* Post Code */}
+              <div>
+                <label className="block text-sm font-medium text-secondary-700 mb-2">
+                  Post Code
+                </label>
+                <input
+                  type="text"
+                  name="billing.zipCode"
+                  value={formData.billingAddress.zipCode}
+                  onChange={handleInputChange}
+                  placeholder="3072"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-300"
+                />
+              </div>
+            </div>
+
 
               {/* Security Notice */}
               <div className="bg-gray-50 p-4 rounded-lg">
