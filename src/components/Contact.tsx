@@ -70,7 +70,7 @@ const Contact = () => {
     const msg = `Hi, I'm ${formData.name} (${formData.email}) from ${formData.company || 'N/A'}.
 Service Interested: ${formData.service}
 Message: ${formData.message}`;
-    const url = `https://wa.me/916281116923?text=${encodeURIComponent(msg)}`;
+    const url = `https://wa.me/610468722463?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank');
     setShowDialog(false);
   };
