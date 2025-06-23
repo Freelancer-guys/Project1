@@ -9,7 +9,7 @@ const About = () => {
 
   const stats = [
     { icon: Users, value: '50+', label: 'Happy Clients' },
-    { icon: Award, value: '100+', label: 'Projects Completed' },
+    { icon: Award, value: '50+', label: 'Projects Completed' },
     { icon: Clock, value: '5+', label: 'Years of Experience' },
     { icon: ShieldCheck, value: '24/7', label: 'Support Available' }
   ];

@@ -30,13 +30,14 @@ const PaymentGateway: React.FC<PaymentGatewayProps> = ({ isOpen, onClose }) => {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const services = [
-    { value: 'consultation', label: 'IT Consultation - $150/hour', price: 150 },
-    { value: 'development', label: 'Custom Development - $200/hour', price: 200 },
-    { value: 'cloud-migration', label: 'Cloud Migration - $5000', price: 5000 },
-    { value: 'security-audit', label: 'Security Audit - $2500', price: 2500 },
-    { value: 'mobile-app', label: 'Mobile App Development - $15000', price: 15000 },
-    { value: 'custom', label: 'Custom Service', price: 0 }
-  ];
+  { value: 'consultation', label: 'IT Consultation - A$150/hour', price: 150 },
+  { value: 'development', label: 'Custom Development - A$200/hour', price: 200 },
+  { value: 'cloud-migration', label: 'Cloud Migration - A$5000', price: 5000 },
+  { value: 'security-audit', label: 'Security Audit - A$2500', price: 2500 },
+  { value: 'mobile-app', label: 'Mobile App Development - A$15000', price: 15000 },
+  { value: 'custom', label: 'Custom Service', price: 0 }
+];
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -289,7 +290,7 @@ const PaymentGateway: React.FC<PaymentGatewayProps> = ({ isOpen, onClose }) => {
               {/* Amount */}
               <div>
                 <label className="block text-sm font-medium text-secondary-700 mb-2">
-                  Amount (USD) *
+                  Amount (AUD) *
                 </label>
                 <input
                   type="number"
@@ -508,7 +509,7 @@ const PaymentGateway: React.FC<PaymentGatewayProps> = ({ isOpen, onClose }) => {
                     <span>Processing Payment...</span>
                   </div>
                 ) : (
-                  `Pay $${formData.amount || '0.00'}`
+                  `Pay A$${formData.amount || '0.00'}`
                 )}
               </motion.button>
             </form>
