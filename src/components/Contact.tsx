@@ -49,8 +49,8 @@ const Contact = () => {
 
   const handleEmail = () => {
     emailjs.send(
-      'service_vqajrn8',
-      'template_sohzwld',
+      'service_bpkzifd',
+      'template_rdqymf8',
       {
         name: formData.name,
         email: formData.email,
@@ -58,7 +58,7 @@ const Contact = () => {
         service: formData.service,
         message: formData.message,
       },
-      'dHl9iuCOPt7P5UJ2p'
+      'MKlbjCsIs3qfGT1lr'
     ).then(() => {
       alert('Email sent!');
     }).catch(() => {
