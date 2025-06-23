@@ -68,9 +68,9 @@ const Contact = () => {
 
   const handleWhatsApp = () => {
     const msg = `Hi, I'm ${formData.name} (${formData.email}) from ${formData.company || 'N/A'}.
-Service Interested: ${formData.service}
-Message: ${formData.message}`;
-    const url = `https://wa.me/919704732968?text=${encodeURIComponent(msg)}`;
+    Service Interested: ${formData.service}
+    Message: ${formData.message}`;
+    const url = `https://wa.me/61468722463?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank');
     setShowDialog(false);
   };
