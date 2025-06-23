@@ -49,7 +49,7 @@ const Contact = () => {
 
   const handleEmail = () => {
     emailjs.send(
-      'service_nr1ofva',
+      'service_vqajrn8',
       'template_sohzwld',
       {
         name: formData.name,
